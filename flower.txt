@@ -1,0 +1,80 @@
+import turtle
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor("lightblue")
+
+# Create a turtle named "flower"
+flower = turtle.Turtle()
+flower.speed(10)
+
+# Function to draw a petal
+def draw_petal(radius, angle):
+    flower.color("magenta", "pink")
+    flower.begin_fill()
+    flower.circle(radius, angle)
+    flower.left(180 - angle)
+    flower.circle(radius, angle)
+    flower.left(180 - angle)
+    flower.end_fill()
+
+# Function to draw the center of the flower
+def draw_center(radius):
+    flower.penup()
+    flower.goto(0, -radius / 2)
+    flower.pendown()
+    flower.color("yellow")
+    flower.begin_fill()
+    flower.circle(radius)
+    flower.end_fill()
+    flower.penup()
+    flower.goto(0, 0)
+    flower.pendown()
+
+# Function to draw the stem
+def draw_stem(length):
+    flower.color("green")
+    flower.width(10)
+    flower.right(90)
+    flower.forward(length)
+
+# Function to draw a leaf
+def draw_leaf():
+    flower.color("green", "lightgreen")
+    flower.begin_fill()
+    flower.circle(60, 60)
+    flower.left(120)
+    flower.circle(60, 60)
+    flower.left(60)
+    flower.end_fill()
+
+# Move the turtle to the starting position
+flower.penup()
+flower.goto(0, 0)
+flower.pendown()
+
+# Draw 12 petals
+for _ in range(12):
+    draw_petal(200, 60)
+    flower.right(30)  # Adjust the angle to fit 12 petals
+
+# Draw the center of the flower
+draw_center(50)
+
+# Draw the stem
+flower.right(90)
+flower.forward(200)
+flower.left(90)
+
+# Draw leaves on either side of the stem
+flower.penup()
+flower.goto(0, -200)
+flower.pendown()
+flower.right(45)
+draw_leaf()
+flower.left(90)
+draw_leaf()
+
+# Hide the turtle and display the window
+flower.hideturtle()
+turtle.done()
